@@ -155,7 +155,7 @@ const Home = () => {
             Home
           </NavLink>
           <NavLink to="/about" active={location.pathname === "/about"}>
-            About
+            About Dev
           </NavLink>
           <NavLink to="/contact" active={location.pathname === "/contact"}>
             Contact

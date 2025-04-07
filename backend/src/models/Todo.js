@@ -1,3 +1,4 @@
+//model.js
 import mongoose from "mongoose";
 
 const TodoSchema = new mongoose.Schema(
@@ -15,6 +16,12 @@ const TodoSchema = new mongoose.Schema(
         completed: {
             type: Boolean,
             default: false
+        },
+        deadline: { type: Date }, 
+        priority: {
+            type: String,
+            enum: ["Highest", "High", "Mid", "Low"], 
+            default: "Mid",
         },
         userId: {
             type: mongoose.Schema.Types.ObjectId,

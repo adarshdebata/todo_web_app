@@ -30,6 +30,15 @@ router.post(
             .withMessage("Title is required")
             .isLength({ max: 100 })
             .withMessage("Title must be at most 100 characters long"),
+        body("deadline")
+            .notEmpty()
+            .isISO8601()
+            .toDate()
+            .withMessage("Deadline must be a valid date"),
+        body("priority")
+            .notEmpty()
+            .isIn(["Highest", "High", "Mid", "Low"])
+            .withMessage("Priority must be one of Highest, High, Mid, Low"),
         body("description").optional().trim(),
         body("completed").optional().isBoolean().withMessage("Completed must be a boolean"),
     ],
@@ -50,6 +59,15 @@ router.put(
             .withMessage("Title cannot be empty")
             .isLength({ max: 100 })
             .withMessage("Title must be at most 100 characters long"),
+        body("deadline")
+            .optional()
+            .isISO8601()
+            .toDate()
+            .withMessage("Deadline must be a valid date"),
+        body("priority")
+            .optional()
+            .isIn(["Highest", "High", "Mid", "Low"])
+            .withMessage("Priority must be one of Highest, High, Mid, Low"),
         body("description").optional().trim(),
         body("completed").optional().isBoolean().withMessage("Completed must be a boolean"),
     ],
